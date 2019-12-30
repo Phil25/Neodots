@@ -6,6 +6,8 @@
 !/alacritty/**/*
 !/bspwm/
 !/bspwm/**/*
+!/latexmk/
+!/latexmk/**/*
 !/polybar/
 !/polybar/**/*
 !/scripts/
