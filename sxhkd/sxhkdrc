@@ -6,6 +6,14 @@
 alt + Return
 	alacritty
 
+# emacs
+alt + e
+	emacs
+
+# chromium
+alt + w
+	chromium
+
 # program launcher
 Super_L
 	dmenu_run
