@@ -22,7 +22,9 @@
        company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy               ; a search engine for love and life
+        +fuzzy
+        +icons)
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -54,7 +56,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
@@ -71,10 +73,15 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       eshell            ; a consistent, cross-platform shell (WIP)
+       ;;eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
        ;;vterm             ; another terminals in Emacs
+
+       :checkers
+       syntax              ; tasing you for every semicolon you forget
+       spell             ; tasing you for misspelling mispelling
+       grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -84,12 +91,10 @@
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       flycheck          ; tasing you for every semicolon you forget
-       ;;flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
-       ;;lsp
+       lsp
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
@@ -104,7 +109,8 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
-       cc                ; C/C++/Obj-C madness
+       (cc                ; C/C++/Obj-C madness
+        +lsp)
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -126,7 +132,7 @@
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       latex             ; writing papers in Emacs has never been so fun
+       ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
@@ -146,7 +152,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       ;;python            ; beautiful is better than ugly
+       python            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
@@ -171,7 +177,6 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
-       ;;write             ; emacs for writers (fiction, notes, papers, etc.)
 
        :config
        ;;literate

@@ -2,10 +2,9 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; refresh' after modifying this file!
-(setq projectile-project-search-path '("~/Work/")) ; Work dir for projects
 
-;; These are used for a number of things, particularly for GPG configuration,
-;; some email clients, file templates and snippets.
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
 (setq user-full-name "John Doe"
       user-mail-address "john@doe.com")
 
@@ -18,9 +17,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; test
-(setq doom-font (font-spec :family "monospace" :size 14)
-      doom-variable-pitch-font (font-spec :family "sans"))
+(setq doom-font (font-spec :family "monospace" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -49,3 +46,44 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+;; specify projects directory
+(setq projectile-project-search-path '("~/Work/"))
+
+;; :q should kill the current buffer rather than quitting emacs entirely
+(evil-ex-define-cmd "q" 'kill-current-buffer)
+
+;; Need to type out :quit to close emacs
+(evil-ex-define-cmd "quit" 'evil-quit)
+
+;; continuously scroll though PDF documents
+(setq doc-view-continuous t)
+
+;; disable automatic line breaking
+(add-hook 'LaTeX-mode-hook 'turn-off-auto-fill)
+
+;; disable visual line mode (make dj delete two lines)
+(after! tex
+  (remove-hook 'TeX-mode-hook #'visual-line-mode))
+
+;; make tab work normally not re-indent
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+
+(defun run-command-in-root (cmd)
+  "Invoke `async-shell-command' in the project's root."
+  (interactive)
+  (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))
+    (call-interactively (async-shell-command cmd))))
+
+(global-set-key (kbd "<f5>") (lambda () (interactive) (run-command-in-root "./run.sh")))
+(global-set-key (kbd "<f6>") (lambda () (interactive) (run-command-in-root "./compile.sh")))
+
+;; 100ms to activate autocompletion
+(after! company
+  (setq company-idle-delay 0.1))
+
+;; ccls config options
+(setq ccls-initialization-options
+      '(:index (:initialBlacklist ("release" "debug"))
+        :compilationDatabaseDirectory "debug"
+        :clang (:resourceDir "/usr/lib64/clang/9.0.1")))
