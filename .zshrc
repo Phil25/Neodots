@@ -1,13 +1,22 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+KEYTIMEOUT=1 # exit normal mode faster
 
 setopt appendhistory
 unsetopt beep
 bindkey -v
 
+# disable C-s block
+stty -ixon
+
 # fix broken backspace after exiting normal mode
-bindkey "^?" backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+
+# emacs reverse search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 
 autoload -Uz compinit
 compinit
@@ -36,7 +45,7 @@ mkcd(){
 # open new terminal with same pwd
 clone(){
 	DIR=`pwd`
-	nohup urxvt -cd "$DIR" &>/dev/null &
+	nohup alacritty --working-directory "$DIR" &>/dev/null &
 	disown
 }
 alias cln="clone"
