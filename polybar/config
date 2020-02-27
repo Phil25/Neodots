@@ -69,6 +69,8 @@ label-empty-padding = 2
 type = internal/xwindow
 label = %title%
 
+label-maxlen = 80
+
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -141,7 +143,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 100
+full-at = 99
 
 label-discharging = %percentage%%
 
@@ -153,6 +155,7 @@ format-charging-underline = #ffb52a
 format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
+label-full =
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
