@@ -16,7 +16,7 @@ alt + w
 
 # program launcher
 Super_L
-	dmenu_run
+	rofi -show drun
 
 # make sxhkd reload its configuration files:
 alt + Escape

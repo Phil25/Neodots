@@ -14,6 +14,8 @@
 !/scripts/**/*
 !/sxhkd/
 !/sxhkd/**/*
+!/rofi/
+!/rofi/**/*
 !.gitignore
 !.xinitrc
 !.zshrc
