@@ -87,3 +87,6 @@
       '(:index (:initialBlacklist ("release" "debug"))
         :compilationDatabaseDirectory "debug"
         :clang (:resourceDir "/usr/lib64/clang/9.0.1")))
+
+;; disable automatic closing paren
+(after! smartparens (smartparens-global-mode -1))
