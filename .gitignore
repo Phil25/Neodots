@@ -6,6 +6,8 @@
 !/alacritty/**/*
 !/bspwm/
 !/bspwm/**/*
+!/git/
+!/git/**/*
 !/latexmk/
 !/latexmk/**/*
 !/polybar/
