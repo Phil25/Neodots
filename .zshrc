@@ -31,7 +31,8 @@ alias q='exit'
 alias ':q'='exit'
 
 alias g='git'
-alias v='vim'
+alias v='nvim'
+alias vim='nvim'
 
 alias i='sudo zypper install --no-recommends'
 alias u='sudo zypper remove --clean-deps'

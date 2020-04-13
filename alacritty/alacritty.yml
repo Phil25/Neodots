@@ -501,7 +501,6 @@ debug:
 #   - AppKeypad
 key_bindings:
   - { key: Paste,                   action: Paste                      }
-  - { key: V,        mods: Control, action: PasteSelection             }
   - { key: Copy,                    action: Copy                       }
   - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
   - { key: PageDown, mods: Shift,   action: ScrollPageDown, mode: ~Alt }

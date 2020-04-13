@@ -10,6 +10,7 @@
 !/git/**/*
 !/latexmk/
 !/latexmk/**/*
+!/nvim/init.vim
 !/polybar/
 !/polybar/**/*
 !/scripts/
