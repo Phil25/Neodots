@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
+Plug 'withgod/vim-sourcepawn'
 call plug#end()
 
 " multiple file management
@@ -51,8 +52,17 @@ set updatetime=100 " lower updatetime for gitgutter
 " w!! saves any file regardless of starting nvim with sudo
 cmap w!! w !sudo tee > /dev/null %
 
+" file type specific
+au FileType sh set expandtab!
+au FileType sourcepawn set expandtab!
+
 " formats
-autocmd FileType sh set expandtab!
+set fileformat=unix
+set fileformats=unix,dos
+
+" projects
+set exrc   " allow loading project-specific rc files
+set secure " disallow autocmd, shell and write in project-specific files
 
 " run custom scripts for various stuff
 map <F5> :! ./run.sh "%"<cr>
