@@ -1,17 +1,21 @@
 configuration {
 	modi: "drun,window,run,ssh";
-	width: 30;
-	lines: 25;
 	font: "mono 14";
 	location: 4;
 	show-icons: true;
 	matching: "fuzzy";
 	scroll-method: 1;
-	theme: "gruvbox-dark-soft";
 	display-drun: "";
 	kb-remove-to-eol: ""; /* clear */
 	kb-remove-to-sol: ""; /* clear */
 	kb-accept-entry: "Return"; /* clear */
 	kb-row-up: "Control+k,Up,Control+p,ISO_Left_Tab";
 	kb-row-down: "Control+j,Down,Control+n";
+}
+
+@import "gruvbox-dark-soft.rasi"
+
+window {
+	width: 25%;
+	height: 100%;
 }
