@@ -36,6 +36,7 @@ alias vim='nvim'
 
 alias i='sudo zypper install --no-recommends'
 alias u='sudo zypper remove --clean-deps'
+alias s='zypper search'
 
 # create a directory and enter it
 mkcd(){
@@ -56,13 +57,29 @@ cdiff(){
 	diff "$1" "$2" --color=always | less -R
 }
 
+function cd() {
+	if [[ -d ./venv ]]; then
+		deactivate
+	fi
+
+	builtin cd $1
+
+	if [[ -d ./venv ]]; then
+		source ./venv/bin/activate
+	fi
+}
+
 vim_ins="%F{cyan}I%f"
 vim_nor="%F{green}N%f"
 dir_view="%F{blue}%~%f"
 
+function venv_info(){
+    [ $VIRTUAL_ENV ] && echo '✻ %F{red}%B'`basename $VIRTUAL_ENV`'%b ⌈'`python --version | cut -d' ' -f2-`'⌋%f'
+}
+
 function update_prompt(){
 	vim_mode="${${KEYMAP/vicmd/$vim_nor}/(main|viins)/$vim_ins}"
-	PS1="╭╼ %B$dir_view%b
+    PS1="╭╼ %B$dir_view%b $(venv_info)
 ╰─┤%B$vim_mode%b├╼ "
 }
 
